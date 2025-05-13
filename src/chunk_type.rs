@@ -1,7 +1,7 @@
 use std::{fmt::{self, Display}, str::FromStr};
 
-#[derive(Debug, PartialEq)]
-pub struct ChunkType([u8; 4]);
+#[derive(Debug, PartialEq, Clone)]
+pub struct ChunkType(pub [u8; 4]);
 
 impl TryFrom<[u8; 4]> for ChunkType {
     type Error = &'static str;
@@ -39,7 +39,7 @@ impl Display for ChunkType {
 }
 
 impl ChunkType {
-    fn bytes(&self) -> [u8; 4] {
+    pub fn bytes(&self) -> [u8; 4] {
         self.0
     }
 
